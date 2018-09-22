@@ -1,0 +1,28 @@
+"*":
+  "color-picker":
+    preferredFormat: "HEX"
+    randomColor: false
+  core:
+    projectHome: "/home/marta/projects"
+    telemetryConsent: "no"
+    themes: [
+      "neutron-dark-ui"
+      "material-palenight-syntax"
+    ]
+  editor:
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    showLineNumbers: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "a5e8ce3a-95b2-4d42-ae64-bbf956a66f30"
+  fonts:
+    fontFamily: "PT Mono"
+  "linter-ui-default": {}
+  "markdown-preview":
+    useGitHubStyle: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ensureSingleTrailingNewline: true
