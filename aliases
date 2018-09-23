@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# git aliases for the super lazy
+alias gall="git commit -am"
+alias gps="git push"
+alias gpl="git pull --rebase --autostash"
+alias gc="git commit"
+alias gl="git log --oneline"
+alias gs="git status"
+
+# ls aliases
+alias ll='ls -alF'
+alias la="ls -lahF"
+alias l='ls -CF'
+# List only directories
+alias lsd="ls -lhF | grep --color=never '^d'"
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# IP addresses
+alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="sudo ifconfig | grep -Eo 'inet (addr:)?([0-9]*\\.){3}[0-9]*' | grep -Eo '([0-9]*\\.){3}[0-9]*' | grep -v '127.0.0.1'"
+alias ips="sudo ifconfig -a | grep -o 'inet6\\? \\(addr:\\)\\?\\s\\?\\(\\(\\([0-9]\\+\\.\\)\\{3\\}[0-9]\\+\\)\\|[a-fA-F0-9:]\\+\\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# copy working directory
+alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard'
+
+alias untar='tar xvf'
+
+# Copy my public key to clipboard.
+alias pubkey="more ~/.ssh/id_rsa_new.pub | xclip -selection clipboard | echo '=> Public key copied to clipboard.'"
+
+alias gr='grep -r'
+alias mount='mount | column -t'
+
+# Ruby development
+alias be="bundle exec"
+
+# kubernetes; not all work with appended `--context=`
+alias kuberestarts="kubectl get pods --all-namespaces --sort-by='.status.containerStatuses[0].restartCount'"
+alias kubenotrunning="kubectl get pods --all-namespaces |grep -v Running"

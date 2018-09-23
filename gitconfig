@@ -1,0 +1,24 @@
+[user]
+  name = Marta Paciorkowska
+	email = marta@paciorkowska.pl
+[push]
+	default = matching
+[color]
+	branch = true
+	diff = true
+	grep = true
+	status = true
+[alias]
+  alias = config --get-regexp alias
+  amend = commit --amend
+  branches = branch -a
+  c = commit
+  cm = commit message
+  contribs = shortlog --summary --numbered # List contributors w/number of commits
+  graph = log --graph --color
+  p = pull --rebase --autostash
+  r = remote -v
+  s = status
+[merge]
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
