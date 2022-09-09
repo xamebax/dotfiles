@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# I want to survive the robot apocalypse
+alias please=sudo
+
 # git aliases for the super lazy
 alias gall="git commit -am"
 alias gps="git push"
@@ -7,6 +10,16 @@ alias gpl="git pull --rebase --autostash"
 alias gc="git commit"
 alias gl="git log --oneline"
 alias gs="git status"
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
 
 # ls aliases
 alias ll='ls -alF'
@@ -27,17 +40,26 @@ alias ips="sudo ifconfig -a | grep -o 'inet6\\? \\(addr:\\)\\?\\s\\?\\(\\(\\([0-
 # copy working directory
 alias cwd='pwd | tr -d "\r\n" | xclip -selection clipboard'
 
-alias untar='tar xvf'
-
 # Copy my public key to clipboard.
-alias pubkey="more ~/.ssh/id_rsa_new.pub | xclip -selection clipboard | echo '=> Public key copied to clipboard.'"
+alias pubkey="more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '=> Public key copied to clipboard.'"
 
+alias untar='tar xvf'
 alias gr='grep -r'
 alias mount='mount | column -t'
+
+# kubernetes
+alias kuberestarts="kubectl get pods --all-namespaces --sort-by='.status.containerStatuses[0].restartCount'"
+alias kubenotrunning="kubectl get pods --all-namespaces |grep -v Running"
 
 # Ruby development
 alias be="bundle exec"
 
-# kubernetes; not all work with appended `--context=`
-alias kuberestarts="kubectl get pods --all-namespaces --sort-by='.status.containerStatuses[0].restartCount'"
-alias kubenotrunning="kubectl get pods --all-namespaces |grep -v Running"
+# Go, list packages that can be upgraded
+alias goupgrade="go list -u -f '{{if (and (not (or .Main .Indirect)) .Update)}}{{.Path}}: {{.Version}} -> {{.Update.Version}}{{end}}' -m all 2> /dev/null"
+
+# Python
+# clear pycache if tox is failing
+alias pycache_clear="find . \( -name '__pycache__' -or -name '*.pyc' \) -delete"
+
+# Oda specific
+alias klipy="/Users/martapaciorkowska/kolonialno/klipy/.venv/bin/python -m klipy"

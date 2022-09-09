@@ -13,7 +13,6 @@ files_to_symlink=(\
 "atom/styles.less" \
 "bash_profile" \
 "bashrc" \
-"exports" \
 "gitconfig"
 )
 
